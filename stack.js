@@ -185,3 +185,38 @@ numStack.push(7);
 numStack.push(2);
 //display(numStack)
 sortStack(numStack);
+
+
+//creating Queue using stacks
+class queueStack { 
+stack1 = new Stack()
+stack2= new Stack()
+
+enqueue(item){
+  this.stack1.push(item)
+}
+
+dequeue(){
+  if(this.stack2.top === null){
+    if(this.stack1.length === 0){
+      console.log('nothing to dequeue')
+    }
+    while(this.stack1.top !== null){
+      let move = this.stack1.pop()
+      this.stack2.push(move)
+    }
+  }
+}
+}
+
+let newQueueStack = new queueStack()
+
+newQueueStack.enqueue('Spock')
+newQueueStack.enqueue('Charley')
+newQueueStack.enqueue('Fred')
+
+//display(newQueueStack.stack1)
+
+newQueueStack.dequeue()
+
+display(newQueueStack.stack1)
