@@ -151,9 +151,8 @@ function squareDancing() {
   dancers.enqueue(["F", "Beyonce"]);
   let peopleWaiting = [];
   while (dancers.first !== null) {
-   
     peopleWaiting.push(dancers.dequeue());
-    console.log(peopleWaiting)
+    console.log(peopleWaiting);
     let nextPerson = dancers.first.value;
     if (peopleWaiting[0][0] !== nextPerson[0]) {
       nextPerson = dancers.dequeue();
@@ -163,14 +162,47 @@ function squareDancing() {
         } dancer is ${nextPerson[1]}`
       );
       peopleWaiting.splice(0, 1);
-
-    } 
+    }
   }
-  console.log('LEFTOVERS', peopleWaiting)
-  return peopleWaiting
-/*   for (let i = 0; i < peopleWaiting.length; i++) {
+  console.log("LEFTOVERS", peopleWaiting);
+  return peopleWaiting;
+  /*   for (let i = 0; i < peopleWaiting.length; i++) {
     dancers.enqueue(peopleWaiting[i]);
   } */
 }
 
 squareDancing();
+
+/* At the Ophidian Bank, a single teller serves a long queue of people. New customers join the end of the queue, and the teller will serve a customer only if they have all of the appropriate paperwork. Write a representation of this queue; 25% of the time (random), a customer's paperwork isn't quite right, and it's back to the end of the queue. Show what a few minutes of the bank's lobby would look like. */
+ 
+
+function OphidianBank(queue){
+ //takes in queue of customers, then for the length of the queue (while...) will take first customer and put into random t/f ==where 25% of the time will say 'f'--if f, then dequeue and enqueue, if t, then dequeue. 
+
+ while(queue.first !== null){
+   let person = queue.first
+   let randomBool = Math.random() < 0.75
+   if(randomBool == true){
+     console.log(`${person.value} has the right paperwork, TRUE`)
+     queue.dequeue()
+   }
+   else {
+    console.log(`${person.value} has the wrong paperwork, FALSE`)
+
+     queue.enqueue(person)
+     queue.dequeue()
+   }
+ }
+}
+
+function makeBankLine(number){
+  let bankLine = new Queue()
+  for(let i = 0; i < number; i++){
+  bankLine.enqueue(i)
+  }
+  return bankLine
+}
+
+let line = makeBankLine(100)
+
+OphidianBank(line)
