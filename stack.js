@@ -206,6 +206,7 @@ dequeue(){
       this.stack2.push(move)
     }
   }
+  this.stack2.pop()
 }
 }
 
@@ -219,4 +220,4 @@ newQueueStack.enqueue('Fred')
 
 newQueueStack.dequeue()
 
-display(newQueueStack.stack1)
+display(newQueueStack.stack2)
